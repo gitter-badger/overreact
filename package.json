@@ -1,0 +1,22 @@
+{
+  "name": "over-react",
+  "version": "0.0.0",
+  "description": "A scaffolding tool to simplify the development and deployment process of a React application running on an Express server.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbreaton/over-react.git"
+  },
+  "keywords": [
+    "overreact",
+    "over-react",
+    "react",
+    "scaffold"
+  ],
+  "author": "nbreaton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nbreaton/over-react/issues"
+  },
+  "homepage": "https://github.com/nbreaton/over-react#readme"
+}
