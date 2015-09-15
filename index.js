@@ -13,12 +13,16 @@ var create = require("./modules/create");
 cli
   .usage("[param] [options...]")
   .option("", null)
-  .option("build [directory]", "outputs static resources")
-  .option("create [directory]", "creates a new react project")
-  .option("develop", "spins a development server")
-  .option("generate [view|comp] [name]", "deletes specified module")
-  .option("remove [view|comp] [name]", "deletes specified module")
-  .option("run [port]", "starts the server in production mode")
+  .option("build [directory]", "output static resources")
+  .option("create [directory]", "create a new react project")
+  .option("develop", "spin up a development server")
+  .option("generate [view|comp] [name]", "delete specified module")
+  .option("remove [view|comp] [name]", "delete specified module")
+  .option("run [port]", "start the server in production mode")
   .parse(process.argv);
 
-if (cli.create) create();
+if (cli.create) {
+  create(cli.create);
+} else {
+  cli.help();
+}
