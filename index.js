@@ -38,8 +38,6 @@ if (!project) return;
 // run all project related tasks
 if (cli.run) {
   run(project, true);
-} else {
-  cli.help();
 }
 
 // import server and react app
