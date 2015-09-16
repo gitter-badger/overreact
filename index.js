@@ -13,8 +13,9 @@ var fs   = require("fs");
 var path = require("path");
 
 // gather local files
-var create = require("./modules/create");
-var run    = require("./modules/run");
+var create    = require("./modules/create");
+var generate  = require("./modules/generate");
+var run       = require("./modules/run");
 
 // create program arguments
 cli
@@ -23,8 +24,8 @@ cli
   .option("build [directory]", "output static resources")
   .option("create [directory]", "create a new react project")
   .option("develop", "spin up a development server")
-  .option("generate [view|comp] [name]", "delete specified module")
-  .option("remove [view|comp] [name]", "delete specified module")
+  .option("generate [view,comp] [name]", "delete specified module")
+  .option("remove [view,comp] [name]", "delete specified module")
   .option("run [port]", "start the server in production mode")
   .parse(process.argv);
 
@@ -41,6 +42,10 @@ if (cli.run) {
   run(project, true);
 }
 
+if (cli.generate || cli.remove) {
+  needsProject();
+  generate(project, (cli.generate || cli.remove), cli.args[0], !!cli.remove);
+}
 
 // import server and react app
 function importProject () {
