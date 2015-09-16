@@ -35,7 +35,7 @@ export default function (project, production, port = 3000, tmp) {
 
   // respond with react app for all 404s
   server.use("*", (req, res) => {
-    Router.run(project.router, req.originalUrl, (Handler) => {
+    Router.run(project.routes, req.originalUrl, (Handler) => {
       let app = production ? React.renderToString(React.createElement(Handler, null)) : "";
       res.render("index.ejs", { app, head, host });
     });

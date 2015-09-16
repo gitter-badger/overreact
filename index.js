@@ -55,7 +55,7 @@ if (cli.args[0] == "sydney") {
 // import server and react app
 function importProject () {
   var root   = process.cwd();
-  var app    = path.join(root, "app", "router.jsx");
+  var app    = path.join(root, "app", "index.jsx");
   var head   = path.join(root, "config", "head.html");
   var server = path.join(root, "config", "server.js");
 
@@ -64,7 +64,7 @@ function importProject () {
       if (fs.existsSync(server)) {
         return {
           root: root,
-          router: require(app),
+          routes: require(app),
           server: require(server),
           head: fs.readFileSync(head).toString()
         }
