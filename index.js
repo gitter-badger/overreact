@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 // setup compilers and transforms
-require("babel-core/register");
+require("babel/register")({
+    ignore: /node_modules\/(?!rcomponents)/
+});
 
 // imports
 var cli  = require("commander");
