@@ -4,7 +4,7 @@
   "description": "A scaffolding tool to simplify the development and deployment process of a React application running on an Express server.",
   "main": "index.js",
   "bin": {
-    "overreact": "./index.js"
+    "overreact": "./node_modules/.bin/babel-node ./index.js"
   },
   "repository": {
     "type": "git",

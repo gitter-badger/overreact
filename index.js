@@ -28,12 +28,10 @@ cli
 // create a project
 if (cli.create) {
   create(cli.create);
-  return;
 }
 
 // import a project
 var project = importProject();
-if (!project) return;
 
 // run all project related tasks
 if (cli.run) {
@@ -61,5 +59,5 @@ function importProject () {
   }
 
   console.error("\n[!] You are not in an Overreact project!\n");
-  return false;
+  process.exit();
 }
