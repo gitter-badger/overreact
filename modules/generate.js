@@ -3,7 +3,6 @@ import path from "path";
 
 let jsx =
 `import React from "react";
-import Router from "react-router";
 
 export default class ~ extends React.Component {
 
