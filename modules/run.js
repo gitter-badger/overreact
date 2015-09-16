@@ -5,10 +5,8 @@ import React from "react";
 import Router from "react-router";
 
 export default function (project, production, port = 3000, tmp) {
-  production = false;
   let env = production ? "Production" : "Development";
   let { head, server } = project;
-
 
   // set views location
   server.set("views", path.join("..", "lib", "views"));
