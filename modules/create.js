@@ -7,7 +7,7 @@ let layout = path.resolve(__dirname, "..", "layout");
 export default function (newDirectory) {
   // error if directory not given
   if (!newDirectory || !newDirectory.length) {
-    console.error("Directory must be specified!");
+    console.error("\n[!] Directory must be specified!\n");
     return;
   }
 
@@ -19,7 +19,7 @@ export default function (newDirectory) {
 
   // error if already exists
   if (fs.existsSync(newDirectory)) {
-    console.error(`A file or directory named '${newDirectory}' already exists!`);
+    console.error(`\n[!] A file or directory named '${newDirectory}' already exists!\n`);
     return;
   }
 
@@ -28,7 +28,7 @@ export default function (newDirectory) {
 
   // check if exists
   if (!fs.existsSync(newDirectoryParent)) {
-    console.error(`The directory '${newDirectoryParent}' does not exist!`);
+    console.error(`\n[!] The directory '${newDirectoryParent}' does not exist!\n`);
     return;
   }
 
