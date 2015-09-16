@@ -1,10 +1,10 @@
 import React from "react";
-import Router from "react-router";
+import { Route } from "react-router";
 
-export default function () {
-  return (
-    <Router>
-      <Route />
-    </Router>
-  );
-}
+import Base from "./views/Base";
+
+export default (
+  <Route path="/" component={ Base }>
+
+  </Route>
+)
