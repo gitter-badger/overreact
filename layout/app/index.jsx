@@ -1,16 +1,16 @@
 import React from "react";
-import { Route, HistoryLocation } from "react-router";
+import Router, { Route } from "react-router";
 
 import Base from "./views/Base";
 
-routes = (
+let routes = (
   <Route path="/" component={ Base }>
 
   </Route>
 )
 
-if (typeof document !== undefined) {
-  Router.run(routes, HistoryLocation, (Handler) => {
+if (typeof document === "object") {
+  Router.run(routes, Router.HistoryLocation, (Handler) => {
     React.render(<Handler />, document.getElementById("app"));
   });
 }
