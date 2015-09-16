@@ -39,6 +39,7 @@ if (cli.create) {
 
 if (cli.run) {
   needsProject();
+  cli.run = (Number(cli.run) === 1) ? undefined : cli.run;
   run(project, true, cli.run);
 }
 
