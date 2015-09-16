@@ -4,10 +4,13 @@
 require("babel/register");
 
 // imports
-var cli = require("commander");
+var cli  = require("commander");
+var fs   = require("fs");
+var path = require("path");
 
 // gather local files
 var create = require("./modules/create");
+var run    = require("./modules/run");
 
 // create program arguments
 cli
@@ -21,8 +24,42 @@ cli
   .option("run [port]", "start the server in production mode")
   .parse(process.argv);
 
+
+// create a project
 if (cli.create) {
   create(cli.create);
+  return;
+}
+
+// import a project
+var project = importProject();
+if (!project) return;
+
+// run all project related tasks
+if (cli.run) {
+  run(project, true);
 } else {
   cli.help();
+}
+
+// import server and react app
+function importProject () {
+  var app    = path.join(process.cwd(), "app", "router.jsx");
+  var head   = path.join(process.cwd(), "config", "head.html");
+  var server = path.join(process.cwd(), "config", "server.js");
+
+  if (fs.existsSync(app)) {
+    if (fs.existsSync(head)) {
+      if (fs.existsSync(server)) {
+        return {
+          app: require(app),
+          server: require(server),
+          head: fs.readFileSync(head).toString()
+        }
+      }
+    }
+  }
+
+  console.error("\n[!] You are not in an Overreact project!\n");
+  return false;
 }

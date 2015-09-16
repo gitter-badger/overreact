@@ -15,7 +15,7 @@ overreact [param] [options...]
 
 `remove [view|comp] [name]` : Deletes the `.jsx` module and corresponding `.scss` file.
 
-`run [port]` : Starts the server in production mode. Default port is `8080`.
+`run [port]` : Starts the server in production mode. Default port is `3000`.
 
 `develop` : Spins up an easy to use development server on port `3000`.
 
