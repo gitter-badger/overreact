@@ -29,23 +29,23 @@ cli
   .parse(process.argv);
 
 
-// create a project
+// import a project
+var project = importProject();
+
 if (cli.create) {
   create(cli.create);
 }
 
-// import a project
-var project = importProject();
-
-// run all project related tasks
 if (cli.run) {
+  needsProject();
   run(project, true);
 }
+
 
 // import server and react app
 function importProject () {
   var root   = process.cwd();
-  var app = path.join(root, "app", "router.jsx");
+  var app    = path.join(root, "app", "router.jsx");
   var head   = path.join(root, "config", "head.html");
   var server = path.join(root, "config", "server.js");
 
@@ -62,6 +62,12 @@ function importProject () {
     }
   }
 
-  console.error("\n[!] You are not in an Overreact project!\n");
-  process.exit();
+  return false;
+}
+
+function needsProject () {
+  if (!project) {
+    console.error("\n[!] You are not in an Overreact project!\n");
+    process.exit(0);
+  }
 }

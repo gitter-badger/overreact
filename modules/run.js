@@ -25,21 +25,13 @@ export default function (project, production, port = 3000, tmp) {
 
   // serve static assets
   let assets = path.join(project.root, "assets");
-  if (fs.existsSync(assets)) {
-    server.use("/assets/", express.static(assets));
-  } else {
-    console.error("\n[!] Assets directory not found!\n");
-    return;
-  }
+  if (!fs.existsSync(assets)) fs.mkdirSync(assets);
+  server.use("/assets/", express.static(assets));
 
   // serve public files
   let pub = path.join(project.root, "public");
-  if (fs.existsSync(pub)) {
-    server.use("/", express.static(pub));
-  } else {
-    console.error("\n[!] Public directory not found!\n");
-    return;
-  }
+  if (!fs.existsSync(pub)) fs.mkdirSync(pub);
+  server.use("/", express.static(pub));
 
   // respond with react app for all 404s
   server.use("*", (req, res) => {

@@ -8,7 +8,7 @@ export default function (newDirectory) {
   // error if directory not given
   if (!newDirectory || !newDirectory.length) {
     console.error("\n[!] Directory must be specified!\n");
-    return;
+    process.exit();
   }
 
   // clean up path
@@ -20,7 +20,7 @@ export default function (newDirectory) {
   // error if already exists
   if (fs.existsSync(newDirectory)) {
     console.error(`\n[!] A file or directory named '${newDirectory}' already exists!\n`);
-    return;
+    process.exit();
   }
 
   // find potential parent directory
@@ -29,7 +29,7 @@ export default function (newDirectory) {
   // check if exists
   if (!fs.existsSync(newDirectoryParent)) {
     console.error(`\n[!] The directory '${newDirectoryParent}' does not exist!\n`);
-    return;
+    process.exit();
   }
 
   // all is well and ready to create directory
@@ -47,5 +47,6 @@ export default function (newDirectory) {
                   "   overreact develop\n";
 
     console.log(message);
+    process.exit();
   });
 }
