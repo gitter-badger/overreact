@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nbreaton/over-react.git"
+    "url": "git+https://github.com/nbreaton/overreact.git"
   },
   "keywords": [
     "overreact",
@@ -19,9 +19,9 @@
   "author": "nbreaton",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nbreaton/over-react/issues"
+    "url": "https://github.com/nbreaton/overreact/issues"
   },
-  "homepage": "https://github.com/nbreaton/over-react#readme",
+  "homepage": "https://github.com/nbreaton/overreact#readme",
   "dependencies": {
     "babel": "^5.8.23",
     "commander": "^2.8.1",
