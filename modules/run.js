@@ -1,10 +1,14 @@
 import fs from "fs";
 import path from "path";
 import express from "express";
+import React from "react";
+import Router from "react-router";
 
 export default function (project, production, port = 3000, tmp) {
+  production = false;
   let env = production ? "Production" : "Development";
-  let { app, head, server } = project;
+  let { head, server } = project;
+
 
   // set views location
   server.set("views", path.join("..", "lib", "views"));
@@ -41,7 +45,10 @@ export default function (project, production, port = 3000, tmp) {
 
   // respond with react app for all 404s
   server.use("*", (req, res) => {
-    res.render("index.ejs", { app, head, host });
+    Router.run(project.router, req.originalUrl, (Handler) => {
+      let app = production ? React.renderToString(React.createElement(Handler, null)) : "";
+      res.render("index.ejs", { app, head, host });
+    });
   });
 
   // start server on specified port
