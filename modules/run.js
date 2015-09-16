@@ -9,7 +9,7 @@ export default function (project, production, port = 3000, tmp) {
   let { head, server } = project;
 
   // set views location
-  server.set("views", path.join("..", "lib"));
+  server.set("views", path.join(__dirname, "..", "lib"));
 
   // strip head of wrapper tags
   head = head.replace("<head>", "");
