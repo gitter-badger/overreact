@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // setup compilers and transforms
-require("babel/register");
+require("babel-core/register");
 
 // imports
 var cli  = require("commander");
