@@ -39,7 +39,7 @@ if (cli.create) {
 
 if (cli.run) {
   needsProject();
-  run(project, true);
+  run(project, true, cli.run);
 }
 
 if (cli.generate || cli.remove) {
