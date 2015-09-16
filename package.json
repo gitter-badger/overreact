@@ -1,8 +1,11 @@
 {
-  "name": "over-react",
+  "name": "overreact",
   "version": "0.0.0",
   "description": "A scaffolding tool to simplify the development and deployment process of a React application running on an Express server.",
   "main": "index.js",
+  "bin": {
+    "overreact": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nbreaton/over-react.git"
