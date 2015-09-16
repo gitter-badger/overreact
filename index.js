@@ -48,6 +48,10 @@ if (cli.generate || cli.remove) {
   generate(project, (cli.generate || cli.remove), cli.args[0], !!cli.remove);
 }
 
+if (cli.args[0] == "sydney") {
+  console.log("<3");
+}
+
 // import server and react app
 function importProject () {
   var root   = process.cwd();
