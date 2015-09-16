@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-// setup compilers and transforms
-require("babel/register")({
-    ignore: /node_modules\/(?!rcomponents)/
-});
+var babelOptions = {
+  "optional": ["es7.classProperties"]
+}
+
+// install babel
+require("babel/register")(babelOptions);
 
 // imports
 var cli  = require("commander");
