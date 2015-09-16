@@ -1,6 +1,6 @@
 # Overreact
 
-A scaffolding tool to simplify the development and deployment process of a React application running on an Express server.
+A scaffolding tool to simplify the development and deployment of a React application running on an Express server.
 
 
 ### Command Line Options
