@@ -33,10 +33,17 @@ export default function (project, production, port = 3000, tmp) {
   if (!fs.existsSync(pub)) fs.mkdirSync(pub);
   server.use("/", express.static(pub));
 
-  // respond with react app for all 404s
+  // respond with react app as default
   server.use("*", (req, res) => {
+    // run react router with incoming url
     Router.run(project.routes, req.originalUrl, (Handler) => {
-      let app = production ? React.renderToString(React.createElement(Handler, null)) : "";
+      // generate react element without JSX
+      let handler = React.createElement(Handler, null);
+
+      // setup isomorphic content for production
+      let app = production ? React.renderToString(handler) : "";
+
+      // render index page for correct environment
       res.render("index.ejs", { app, head, host });
     });
   });

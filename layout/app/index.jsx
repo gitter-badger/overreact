@@ -9,10 +9,8 @@ let routes = (
   </Route>
 )
 
-if (typeof document === "object") {
-  Router.run(routes, Router.HistoryLocation, (Handler) => {
-    React.render(<Handler />, document.getElementById("app"));
-  });
-}
+!(typeof document) && Router.run(routes, Router.HistoryLocation, (Handler) => {
+  React.render(<Handler />, document.getElementById("app"));
+});
 
 export default routes;
