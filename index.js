@@ -22,11 +22,11 @@ cli
   .usage("[param] [options...]")
   .option("", null)
   .option("build [directory]", "output static resources")
-  .option("create [directory]", "create a new react project")
-  .option("develop", "spin up a development server")
-  .option("generate [view,comp] [name]", "delete specified module")
+  .option("create [directory]", "create new react project")
+  .option("deploy [port]", "start production server")
+  .option("dev [port]", "start development server")
+  .option("generate [view,comp] [name]", "create specified module")
   .option("remove [view,comp] [name]", "delete specified module")
-  .option("run [port]", "start the server in production mode")
   .parse(process.argv);
 
 

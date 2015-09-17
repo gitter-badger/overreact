@@ -17,8 +17,8 @@ overreact [param] [options...]
 | command                       | description                         |
 |-------------------------------|-------------------------------------|
 | `build [directory]`           | output static resources             |
-| `create [directory]`          | create a new react project          |
-| `develop`                     | spin up a development server        |
-| `generate [view,comp] [name]` | delete specified module             |
+| `create [directory]`          | create new react project            |
+| `deploy [port]`               | start production server             |
+| `dev [port]`                  | start development server            |
+| `generate [view,comp] [name]` | create specified module             |
 | `remove [view,comp] [name]`   | delete specified module             |
-| `run [port]`                  | start the server in production mode |
