@@ -37,10 +37,10 @@ if (cli.create) {
   create(cli.create);
 }
 
-if (cli.run) {
+if (cli.deploy) {
   needsProject();
-  cli.run = (Number(cli.run) === 1) ? undefined : cli.run;
-  run(project, true, cli.run);
+  cli.deploy = (Number(cli.deploy) === 1) ? undefined : cli.deploy;
+  run(project, true, cli.deploy);
 }
 
 if (cli.generate || cli.remove) {
