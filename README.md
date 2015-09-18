@@ -29,17 +29,21 @@ overreact [param] [options...]
 ```
 .
 ├── app/
+│   │   comps/   
+│   │   views/   
 │   └── index.jsx    <---- * must return react or react-router element
 ├── assets/          <---- all files served at /assets/
 ├── config/
 │   ├── head.html    <---- HTML <head>, generated on server
-│   └── server.js    <---- * must return an express application
+│   └── server.js    <---- * must return an Express application
 ├── package.json     
 ├── public/          <---- all files served at /
 │   ├── favicon.ico
 │   └── robots.txt      
 ├── server/          <---- NOT IMPLEMENTED
-└── styles/             
+└── styles/   
+    │   comps/   
+    │   views/   
     └── main.scss    <---- * main styles file
 
 * = a required endpoint
