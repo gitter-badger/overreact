@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 
+import project from "../lib/project";
+
 let jsx =
 `import React from "react";
 
@@ -15,7 +17,7 @@ let scss =
 }
 `
 
-export default function (project, type, _name, remove = false) {
+export default function (type, _name, remove = false) {
   let dir = { app: null, styles: null };
   let name = _name.toLowerCase();
   let Name = name.charAt(0).toUpperCase() + name.substr(1);
@@ -56,5 +58,8 @@ export default function (project, type, _name, remove = false) {
     }
   }
 
-  console.log(`\n[+] ${remove ? "Deleted" : "Created"} 'app/${type}s/${Name}.jsx' and 'styles/${type}s/${name}.scss'\n`);
+  let shape = remove ? "-" : "+";
+  let action = remove ? "Deleted" : "Created";
+
+  console.log(`\n[${shape}] ${action} 'app/${type}s/${Name}.jsx' and 'styles/${type}s/${name}.scss'\n`);
 }

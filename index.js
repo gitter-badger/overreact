@@ -12,10 +12,13 @@ var cli  = require("commander");
 var fs   = require("fs");
 var path = require("path");
 
-// gather local files
+// modules
 var create    = require("./modules/create");
 var generate  = require("./modules/generate");
 var run       = require("./modules/run");
+
+// libs
+var project = require("./lib/project");
 
 // create program arguments
 cli
@@ -30,54 +33,21 @@ cli
   .parse(process.argv);
 
 
-// import a project
-var project = importProject();
-
 if (cli.create) {
   create(cli.create);
 }
 
 if (cli.deploy) {
-  needsProject();
+  project.required();
   cli.deploy = (Number(cli.deploy) === 1) ? undefined : cli.deploy;
-  run(project, true, cli.deploy);
+  run(true, cli.deploy);
 }
 
 if (cli.generate || cli.remove) {
-  needsProject();
-  generate(project, (cli.generate || cli.remove), cli.args[0], !!cli.remove);
+  project.required();
+  generate(cli.generate || cli.remove, cli.args[0], !!cli.remove);
 }
 
 if (cli.args[0] == "sydney") {
   console.log("<3");
-}
-
-// import server and react app
-function importProject () {
-  var root   = process.cwd();
-  var app    = path.join(root, "app", "index.jsx");
-  var head   = path.join(root, "config", "head.html");
-  var server = path.join(root, "config", "server.js");
-
-  if (fs.existsSync(app)) {
-    if (fs.existsSync(head)) {
-      if (fs.existsSync(server)) {
-        return {
-          root: root,
-          routes: require(app),
-          server: require(server),
-          head: fs.readFileSync(head).toString()
-        }
-      }
-    }
-  }
-
-  return false;
-}
-
-function needsProject () {
-  if (!project) {
-    console.error("\n[!] You are not in an Overreact project!\n");
-    process.exit(0);
-  }
 }
