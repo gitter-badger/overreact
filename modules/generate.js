@@ -3,20 +3,6 @@ import path from "path";
 
 import project from "../lib/project";
 
-let jsx =
-`import React from "react";
-
-export default class ~ extends React.Component {
-
-}
-`
-
-let scss =
-`.~ {
-
-}
-`
-
 export default function (type, _name, remove = false) {
   let dir = { app: null, styles: null };
   let name = _name.toLowerCase();
@@ -44,8 +30,13 @@ export default function (type, _name, remove = false) {
       process.exit();
     }
 
-    fs.writeFileSync(appPath, jsx.replace("~", Name));
-    fs.writeFileSync(stylePath, scss.replace("~", name));
+    let template = { jsx: null, scss: null };
+    for (let type in template) {
+      template[type] = fs.readFileSync(path.join(__dirname, "..", "templates", `file.${type}`)).toString();
+    }
+
+    fs.writeFileSync(appPath, template.jsx.replace("~", Name));
+    fs.writeFileSync(stylePath, template.scss.replace("~", name));
   }
 
   if (remove) {
