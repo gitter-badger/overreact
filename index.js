@@ -32,14 +32,19 @@ cli
   .option("remove [type] [name]", "delete specified module")
   .parse(process.argv);
 
+var runCommand = {
+  development: cli.rawArgs.join(" ").indexOf("run --development"),
+  production: cli.rawArgs.join(" ").indexOf("run --production")
+}
+
 
 if (cli.create) {
   create(cli.create);
 }
 
-if (cli.deploy) {
+if (cli.deploy || runCommand.production ) {
   project.required();
-  cli.deploy = (Number(cli.deploy) === 1) ? undefined : cli.deploy;
+  cli.deploy = (cli.deploy && Number(cli.deploy) === 1) ? undefined : cli.deploy;
   run(true, cli.deploy);
 }
 
