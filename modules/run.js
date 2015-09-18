@@ -7,7 +7,7 @@ import Router from "react-router";
 import project from "../lib/project";
 
 export default function (production, port = 3000, tmp) {
-  let { server } = project.endpoints;
+  let { server } = project.endpoint;
 
   // config server
   server.set("views", path.join(__dirname, "..", "lib"));
@@ -26,21 +26,25 @@ export default function (production, port = 3000, tmp) {
 }
 
 function application (server) {
+  let { client } = project.endpoint;
+
   // respond with react app as default
   server.use("*", (req, res) => {
-    // run react router with incoming url
-    Router.run(project.client, req.originalUrl, (Handler) => {
-      // generate react element without JSX
-      let handler = React.createElement(Handler, null);
+    if (client.type.name == "Route") {
+      Router.run(client, req.originalUrl, (Handler) => {
+        render(React.createElement(Handler, null));
+      });
+    } else {
+      render(client);
+    }
 
-      // render index page for correct environment
+    function render (element) {
       res.render("index.ejs", {
-        app: server.get("production") ? React.renderToString(handler) : "",
+        app: server.get("production") ? React.renderToString(element) : "",
         host: server.get("host"),
         head: getHead()
       });
-
-    });
+    }
   });
 }
 
