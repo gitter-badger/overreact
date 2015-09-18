@@ -20,8 +20,8 @@ overreact [param] [options...]
 | `create [directory]`          | create new react project            |
 | `deploy [port]`               | start production server             |
 | `dev [port]`                  | start development server            |
-| `generate [view,comp] [name]` | create specified module             |
-| `remove [view,comp] [name]`   | delete specified module             |
+| `generate [type] [name]`      | create specified module             |
+| `remove [type] [name]`        | delete specified module             |
 
 
 ### Directory Structure
@@ -29,8 +29,6 @@ overreact [param] [options...]
 ```
 .
 ├── app/
-│   │   comps/   
-│   │   views/   
 │   └── index.jsx    <---- * must return react or react-router element
 ├── assets/          <---- all files served at /assets/
 ├── config/
@@ -42,8 +40,6 @@ overreact [param] [options...]
 │   └── robots.txt      
 ├── server/          <---- NOT IMPLEMENTED
 └── styles/   
-    │   comps/   
-    │   views/   
     └── main.scss    <---- * main styles file
 
 * = a required endpoint

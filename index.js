@@ -28,8 +28,8 @@ cli
   .option("create [directory]", "create new react project")
   .option("deploy [port]", "start production server")
   .option("dev [port]", "start development server")
-  .option("generate [view,comp] [name]", "create specified module")
-  .option("remove [view,comp] [name]", "delete specified module")
+  .option("generate [type] [name]", "create specified module")
+  .option("remove [type] [name]", "delete specified module")
   .parse(process.argv);
 
 
