@@ -30,12 +30,12 @@ overreact [param] [options...]
 .
 ├── app/
 │   └── index.jsx    <---- * must return react or react-router element
-├── assets/          <---- all files served at /assets/
+├── assets/          <---- contains all files served at /assets/
 ├── config/
 │   ├── head.html    <---- HTML <head>, generated on server
 │   └── server.js    <---- * must return an Express application
 ├── package.json     
-├── public/          <---- all files served at /
+├── public/          <---- contains all files served at /
 │   ├── favicon.ico
 │   └── robots.txt      
 ├── server/          <---- NOT IMPLEMENTED
