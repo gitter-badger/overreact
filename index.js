@@ -1,24 +1,15 @@
-#!/usr/bin/env node
-
-var babelOptions = {
-  "optional": ["es7.classProperties"]
-}
-
-// install babel
-require("babel/register")(babelOptions);
-
-// imports
-var cli  = require("commander");
-var fs   = require("fs");
-var path = require("path");
+// node modules
+import cli from "commander";
+import fs from "fs";
+import path from "path";
 
 // modules
-var create    = require("./modules/create");
-var generate  = require("./modules/generate");
-var run       = require("./modules/run");
+import create from "./modules/create";
+import generate from "./modules/generate";
+import run from "./modules/run";
 
 // libs
-var project = require("./lib/project");
+import project from "./lib/project";
 
 // create program arguments
 cli
@@ -32,17 +23,32 @@ cli
   .option("remove [type] [name]", "delete specified module")
   .parse(process.argv);
 
-var runCommand = {
-  development: cli.rawArgs.join(" ").indexOf("run --development"),
-  production: cli.rawArgs.join(" ").indexOf("run --production")
+
+// parse
+let enviroment = {
+  development: null,
+  production: null
 }
 
+for (let env in enviroment) {
+  enviroment[env] = cli.rawArgs.join(" ").indexOf("run --${env}") > -1;
+}
+
+class Test {
+  name = (n) => {
+    console.log(n);
+  }
+}
+
+/*
+  handle commands
+*/
 
 if (cli.create) {
   create(cli.create);
 }
 
-if (cli.deploy || runCommand.production ) {
+if (cli.deploy || enviroment.production ) {
   project.required();
   cli.deploy = (cli.deploy && Number(cli.deploy) === 1) ? undefined : cli.deploy;
   run(true, cli.deploy);
@@ -51,8 +57,4 @@ if (cli.deploy || runCommand.production ) {
 if (cli.generate || cli.remove) {
   project.required();
   generate(cli.generate || cli.remove, cli.args[0], !!cli.remove);
-}
-
-if (cli.args[0] == "sydney") {
-  console.log("<3");
 }
