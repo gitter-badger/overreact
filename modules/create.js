@@ -1,6 +1,6 @@
-import child_process from "child_process";
 import fs from 'fs';
 import path from 'path';
+import { exec } from "child_process";
 import { ncp } from 'ncp';
 
 let layout = path.resolve(__dirname, "..", "layout");
@@ -47,8 +47,8 @@ export default function (newDirectory) {
                   `   cd ${saveName}\n` +
                   "   overreact develop\n";
 
-    child_process.exec(`cd #{newDirectory} && npm install`, (err) => {
-      if (err) console.error(error);
+    exec(`cd ${newDirectory} && npm install`, (err) => {
+      if (err) console.error(err);
       else console.log(message);
       process.exit();
     });
