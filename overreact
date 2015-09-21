@@ -4,4 +4,10 @@ require("babel/register")({
   ignore: false
 });
 
+/*
+  "ignore: false" is working for now.
+  Needs investigating.
+*/
+
+
 require("./index.js");
