@@ -1,7 +1,7 @@
 #!/usr/bin/node
 require("babel/register")({
   optional: ['es7.classProperties'],
-  ignore: /node_modules/
+  ignore: false
 });
 
 require("./index.js");
