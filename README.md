@@ -6,8 +6,6 @@ A scaffolding tool to simplify the development and deployment of a React applica
 
 `npm install -g nbreaton/overreact`
 
-**Note:** Currently a bug with "node_modules/.bin" and "register/babel".
-
 ### Command Line Options
 
 ```
