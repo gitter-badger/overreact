@@ -34,12 +34,6 @@ for (let env in enviroment) {
   enviroment[env] = cli.rawArgs.join(" ").indexOf("run --${env}") > -1;
 }
 
-class Test {
-  name = (n) => {
-    console.log(n);
-  }
-}
-
 /*
   handle commands
 */

@@ -9,4 +9,6 @@ let Routes = (
   </Route>
 )
 
-export default Routes;
+let tmp = <h1>Testing without router.</h1>
+
+export default tmp || Routes;
