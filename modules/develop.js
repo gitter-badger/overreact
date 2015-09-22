@@ -9,11 +9,15 @@ let index = path.join(__dirname, "..", "overreact");
 
 
 export default function () {
-  nodemon();
-  webpack();
+  client();   // webpack
+  server();   // nodemon
 }
 
-function nodemon () {
+function client () {
+
+}
+
+function server () {
   nodemon({
     exec: `/usr/bin/node ${index} run --development`,
     ext: "js jsx json html",
@@ -39,8 +43,4 @@ function nodemon () {
       console.log("---------------------------------------\n");
     });
   });
-}
-
-function webpack () {
-
 }
