@@ -6,8 +6,7 @@ require("babel/register")({
 
 /*
   "ignore: false" is working for now.
-  Needs investigating. 
+  Needs investigating.
 */
-
 
 require("./index.js");

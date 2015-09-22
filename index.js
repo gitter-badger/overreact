@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 
 // modules
+import build from "./modules/build";
 import create from "./modules/create";
 import develop from "./modules/develop";
 import generate from "./modules/generate";
@@ -36,6 +37,11 @@ class Foo {
   handle commands
 */
 
+if (cli.build) {
+  project.required();
+  build(cli.build)
+}
+
 if (cli.create) {
   create(cli.create);
 }
@@ -43,7 +49,9 @@ if (cli.create) {
 if (cli.deploy || development) {
   project.required();
   cli.deploy = (cli.deploy && Number(cli.deploy) === 1) ? undefined : cli.deploy;
-  run(development, cli.deploy);
+  build(false, (directory) => {
+    run(development, cli.deploy, directory);
+  });
 }
 
 if (cli.dev) {
