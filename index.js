@@ -5,6 +5,7 @@ import path from "path";
 
 // modules
 import create from "./modules/create";
+import develop from "./modules/develop";
 import generate from "./modules/generate";
 import run from "./modules/run";
 
@@ -23,16 +24,7 @@ cli
   .option("remove [type] [name]", "delete specified module")
   .parse(process.argv);
 
-
-// parse
-let enviroment = {
-  development: null,
-  production: null
-}
-
-for (let env in enviroment) {
-  enviroment[env] = cli.rawArgs.join(" ").indexOf(`run --${env}`) > -1;
-}
+let development = cli.rawArgs.join(" ").indexOf(`run --development`) > -1;
 
 class Foo {
   bar = () => {
@@ -48,10 +40,15 @@ if (cli.create) {
   create(cli.create);
 }
 
-if (cli.deploy || enviroment.production ) {
+if (cli.deploy || development) {
   project.required();
   cli.deploy = (cli.deploy && Number(cli.deploy) === 1) ? undefined : cli.deploy;
-  run(true, cli.deploy);
+  run(development, cli.deploy);
+}
+
+if (cli.dev) {
+  project.required();
+  develop();
 }
 
 if (cli.generate || cli.remove) {

@@ -6,8 +6,9 @@ import Router from "react-router";
 
 import project from "../lib/project";
 
-export default function (production, port = 3000, tmp) {
+export default function (development, port = 3000, tmp) {
   let { server } = project.endpoint;
+  let production = !development;
 
   // config server
   server.set("views", path.join(__dirname, "..", "lib"));
@@ -21,7 +22,7 @@ export default function (production, port = 3000, tmp) {
 
   // start server on specified port
   server.listen(port, () => {
-    console.log(`${server.get("environment")} server is running at http://localhost:${port}`);
+    console.log(`${server.get("environment")} server is running at http://localhost:${port}\n`);
   });
 }
 
