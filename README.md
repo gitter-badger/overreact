@@ -16,10 +16,10 @@ overreact [param] [options...]
 |-------------------------------|-------------------------------------|
 | `build [directory]`           | output static resources             |
 | `create [directory]`          | create new react project            |
-| `deploy [port]`               | start production server             |
 | `dev [port]`                  | start development server            |
 | `generate [type] [name]`      | create specified module             |
 | `remove [type] [name]`        | delete specified module             |
+| `start  [port]`               | start production server             |
 
 
 ### Directory Structure

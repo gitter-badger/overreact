@@ -19,10 +19,10 @@ cli
   .option("", null)
   .option("build [directory]", "output static resources")
   .option("create [directory]", "create new react project")
-  .option("deploy [port]", "start production server")
   .option("dev [port]", "start development server")
   .option("generate [type] [name]", "create specified module")
   .option("remove [type] [name]", "delete specified module")
+  .option("start [port]", "start production server")
   .parse(process.argv);
 
 let development = cli.rawArgs.join(" ").indexOf(`run --development`) > -1;
@@ -46,11 +46,11 @@ if (cli.create) {
   create(cli.create);
 }
 
-if (cli.deploy || development) {
+if (cli.start || development) {
   project.required();
-  cli.deploy = (cli.deploy && Number(cli.deploy) === 1) ? undefined : cli.deploy;
+  cli.start = (cli.start && Number(cli.start) === 1) ? undefined : cli.start;
   build(false, (directory) => {
-    run(development, cli.deploy, directory);
+    run(development, cli.start, directory);
   });
 }
 
