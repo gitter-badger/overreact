@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
 import express from "express";
-import React from "react";
-import Router from "react-router";
 
 import project from "../lib/project";
+
+// require project's modules
+let React = require(path.join(project.root, "node_modules", "react"));
+let Router = require(path.join(project.root, "node_modules", "react-router"));
 
 export default function (development, port = 3000, tmp) {
   let server = require(project.server);
