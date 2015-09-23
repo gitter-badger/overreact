@@ -31,7 +31,7 @@ function application (server) {
 
   // respond with react app as default
   server.use("*", (req, res) => {
-    if (client.type.name == "Route") {
+    if (client.type.name === "Route") {
       Router.run(client, req.originalUrl, (Handler) => {
         render(React.createElement(Handler, null));
       });
