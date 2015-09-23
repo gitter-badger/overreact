@@ -22,8 +22,7 @@ function server () {
     exec: `/usr/bin/node ${index} run --development`,
     ext: "js jsx json html",
     watch: [
-      path.join(project.root, "server", "*"),
-      path.join(project.root, "config", "*"),
+      path.join(project.root, "server", "*")
     ]
   });
 
