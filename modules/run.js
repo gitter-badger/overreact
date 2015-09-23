@@ -7,7 +7,7 @@ import Router from "react-router";
 import project from "../lib/project";
 
 export default function (development, port = 3000, tmp) {
-  let { server } = project.endpoint;
+  let server = require(project.server);
   let production = !development;
 
   // config server
@@ -27,7 +27,7 @@ export default function (development, port = 3000, tmp) {
 }
 
 function application (server) {
-  let { client } = project.endpoint;
+  let client = require(project.client);
 
   // respond with react app as default
   server.use("*", (req, res) => {

@@ -29,8 +29,7 @@ export default function (directory, cb) {
 
   // build files with webpack
   webpack(config("build", directory), (err, stats) => {
-    console.log(stats.toString({ hasErrorDetails: true }));
-
-    // if (cb) cb(directory);
+    console.log(stats.toString());
+    if (cb) cb(directory);
   });
 }
