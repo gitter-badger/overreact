@@ -50,7 +50,7 @@ function application (server) {
 }
 
 function getHead () {
-  let headLocation = path.join(project.root, "config", "head.html");
+  let headLocation = path.join(project.root, "server", "views", "head.html");
 
   if (fs.existsSync(headLocation)) {
     let head = fs.readFileSync(headLocation).toString();
