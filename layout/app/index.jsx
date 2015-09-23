@@ -6,7 +6,7 @@ import Base from "./views/Base";
 let tmp = <h1>Testing without router.</h1>
 
 let Routes = (
-  <Route path="/" component={ Base }>
+  <Route path="/" handler={ null }>
 
   </Route>
 );
