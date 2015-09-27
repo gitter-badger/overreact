@@ -14,7 +14,7 @@ var React = require(path.join(process.cwd(), "node_modules", "react"));
 var Router = require(path.join(process.cwd(), "node_modules", "react-router"));
 
 // local modules
-var build = require("../commands/build");
+var build = require("../cmd/build");
 var error = require("../lib/error");
 var project = require("../lib/project");
 var server = project.server;

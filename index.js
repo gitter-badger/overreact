@@ -5,10 +5,10 @@
 // lcoal modules
 var error = require("./lib/error");
 
-// map commands to modules
+// map cmd to modules
 var commands = {
-  run: "./commands/run",
-  build: "./commands/build"
+  run: "./cmd/run",
+  build: "./cmd/build"
 }
 
 // cut off used args
