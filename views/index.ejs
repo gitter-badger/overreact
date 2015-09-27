@@ -2,7 +2,7 @@
 <html>
 <head>
   <%- head %>
-  <link rel="stylesheet" type="text/css" src="/assets/app.css" />
+  <% if (production) { %><link rel="stylesheet" type="text/css" src="/assets/app.css" /><% } %>
 </head>
 <body>
   <div id="app">

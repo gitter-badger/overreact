@@ -1,5 +1,7 @@
 // node modules
+var compress = require('compression');
 var fs = require("fs");
+var minify = require('html-minifier').minify;
 var path = require("path");
 
 // project's node modules
@@ -23,6 +25,8 @@ module.exports = function () {
     server.set("head", head());
     server.set("port", port() || 3000);
     server.set("views", path.join(__dirname, "..", "views"));
+
+    server.use(compress());
 
     server.use("/", publicFiles());
     server.use("/assets/", staticFiles());
@@ -77,7 +81,10 @@ function production () {
 function head () {
   var head = path.join(process.cwd(), "server", "views", "head.html");
   if (fs.existsSync(head)) {
-    return fs.readFileSync(head).toString();
+    return fs.readFileSync(head)
+            .toString()
+            .replace("<head>", "")
+            .replace("</head>", "");
   }
 
   return "";
@@ -92,8 +99,14 @@ function app (req, res) {
     server.set("App", project.client);
   }
 
-  res.render("index.ejs", {
+  server.render("index.ejs", {
     app: React.renderToString(server.get("App")),
-    head: server.get("head")
+    head: server.get("head"),
+    production: server.get("production")
+  }, function (err, html) {
+    res.send(minify(html, {
+      removeComments: true,
+      collapseWhitespace: true,
+    }));
   });
 }
