@@ -1,42 +1,6 @@
 {
-  "name": "overreact",
-  "version": "0.0.0",
-  "description": "A scaffolding tool to simplify the development and deployment process of a React application running on an Express server.",
-  "bin": {
-    "overreact": "./overreact"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nbreaton/overreact.git"
-  },
-  "keywords": [
-    "overreact",
-    "over-react",
-    "react",
-    "scaffold"
-  ],
-  "author": "nbreaton",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nbreaton/overreact/issues"
-  },
-  "homepage": "https://github.com/nbreaton/overreact#readme",
   "dependencies": {
     "babel": "^5.8.23",
-    "babel-loader": "^5.3.2",
-    "commander": "^2.8.1",
-    "css-loader": "^0.18.0",
-    "deepest-merge": "^0.1.1",
-    "express": "^4.13.3",
-    "extract-text-webpack-plugin": "^0.8.2",
-    "ncp": "^2.0.0",
-    "node-sass": "^3.3.3",
-    "nodemon": "^1.7.0",
-    "react-hot-loader": "^1.3.0",
-    "remove": "^0.1.5",
-    "sass-loader": "^2.0.1",
-    "style-loader": "^0.12.4",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.11.0"
+    "babel-core": "^5.8.25"
   }
 }
