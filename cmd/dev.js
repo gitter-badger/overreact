@@ -2,6 +2,11 @@
 var exec = require("child_process").exec;
 var nodemon = require("nodemon");
 var path = require("path");
+var webpack = require("webpack");
+var WebpackDevServer = require("webpack-dev-server");
+
+// local modules
+var config = require("../lib/webpack");
 
 module.exports = function () {
   require("../lib/project");
@@ -27,5 +32,16 @@ module.exports = function () {
       console.log("[" + time + "] Starting development server!");
       console.log("---------------------------------------\n");
     });
+  });
+
+  var conf = config("dev");
+  var server = new WebpackDevServer(webpack(conf), {
+    publicPath: conf.output.publicPath,
+    hot: true,
+    quiet: true
+  });
+
+  server.listen(8080, function (err) {
+    if (err) console.error(err);
   });
 }
