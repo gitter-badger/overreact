@@ -1,4 +1,0 @@
-Restructure project
-
-Project.require("client");
-	if not found, error("You are missing a required module.")
