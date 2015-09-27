@@ -7,14 +7,13 @@ var WebpackDevServer = require("webpack-dev-server");
 
 // local modules
 var config = require("../lib/webpack");
+var project = require("../lib/project");
 
 module.exports = function () {
-  require("../lib/project");
-
   nodemon({
     exec: path.join(__dirname, "..", "index.js") + " run --development",
     ext: "js jsx json html",
-    watch: path.join(process.cwd(), "server", "*")
+    watch: path.join(project.path.server, "..", "*")
   });
 
   nodemon.on("start", function () {

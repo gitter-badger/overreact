@@ -5,20 +5,22 @@ var fs = require("fs");
 var minify = require('html-minifier').minify;
 var path = require("path");
 
-// project's node modules
-var express = require(path.join(process.cwd(), "node_modules", "express"));
-var React = require(path.join(process.cwd(), "node_modules", "react"));
-var Router = require(path.join(process.cwd(), "node_modules", "react-router"));
-
 // local modules
 var build = require("../cmd/build");
 var error = require("../lib/error");
 var project = require("../lib/project");
-var server = project.server;
+
+// project's node modules
+var express = project.require("express");
+var React = project.require("react");
+var Router = project.require("react-router");
+
+// project's local modules
+var client = project.require("client");
+var server = project.require("server");
 
 module.exports = function () {
   server.set("production", production());
-
   server.get("production") ? build(serve) : serve();
 
   function serve (dir) {
@@ -93,12 +95,12 @@ function head () {
 
 function app (req, res) {
   setTimeout(function () {
-    if (project.client.type.name === "Route") {
-      Router.run(project.client, req.originalUrl, function (Handler) {
+    if (client.type.name === "Route") {
+      Router.run(client, req.originalUrl, function (Handler) {
         server.set("App", React.createElement(Handler, null));
       });
     } else {
-      server.set("App", project.client);
+      server.set("App", client);
     }
 
     var html = fs.readFileSync(path.join(__dirname, "..", "views", "index.ejs")).toString();
