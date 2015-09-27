@@ -16,10 +16,10 @@ overreact [param] [options...]
 |-------------------------------|-------------------------------------|
 | `build [directory]`           | output static resources             |
 | `create [directory]`          | create new react project            |
-| `dev [port]`                  | start development server            |
+| `dev`                         | start development server            |
 | `generate [type] [name]`      | create specified module             |
 | `remove [type] [name]`        | delete specified module             |
-| `start  [port]`               | start production server             |
+| `run`                         | start production server             |
 
 
 ### Directory Structure
@@ -27,18 +27,18 @@ overreact [param] [options...]
 ```
 .
 ├── app/
-│   └── index.jsx    <---- * must return react or react-router element
-├── assets/          <---- contains all files served at /assets/
-├── config/
-│   ├── head.html    <---- HTML <head>, generated on server
-│   └── server.js    <---- * must return an Express application
-├── package.json     
-├── public/          <---- contains all files served at /
+│   └── index.jsx      <---- * must return react or react-router element
+├── assets/            <---- contains all files served at /assets/
+├── public/            <---- contains all files served at /
 │   ├── favicon.ico
 │   └── robots.txt      
-├── server/          <---- NOT IMPLEMENTED
-└── styles/   
-    └── main.scss    <---- * main styles file
+├── server/           
+│   ├── views/
+│   │   └── head.html  <---- HTML <head>, generated on server
+│   └── server.js      <---- * must return an Express application
+├── styles/   
+│   └── main.scss      <---- * main styles file
+└─ package.json     
 
 * = a required endpoint
 ```
