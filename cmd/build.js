@@ -37,7 +37,7 @@ module.exports = function (callback) {
   function next () {
     fs.mkdirSync(dir);
 
-    webpack(config("build", dir), function () {
+    webpack(config("build", dir), function (err, log) {
       callback && callback(dir);
     });
   }
