@@ -8,7 +8,8 @@ var error = require("./lib/error");
 // map cmd to modules
 var commands = {
   run: "./cmd/run",
-  build: "./cmd/build"
+  build: "./cmd/build",
+  dev: "./cmd/dev"
 }
 
 // cut off used args

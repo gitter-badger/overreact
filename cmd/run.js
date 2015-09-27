@@ -1,9 +1,3 @@
-require("babel/register")({
-  only: new RegExp(process.cwd()),
-  ignore: /node_modules/,
-  optional: ["es7.classProperties"]
-});
-
 // node modules
 var fs = require("fs");
 var path = require("path");
@@ -38,7 +32,7 @@ module.exports = function () {
 
     server.listen(server.get("port"), function () {
       var type = server.get("production") ? "Production" : "Development";
-      console.log(type + " running at http://localhost:" + server.get("port"));
+      console.log(type + " running at http://localhost:" + server.get("port") + "\n");
     });
   }
 }
