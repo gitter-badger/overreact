@@ -2,8 +2,10 @@
 var fs = require("fs");
 var path = require("path");
 var rmdir = require("rmdir");
+var webpack = require("webpack");
 
 // local modules
+var config = require("../lib/webpack");
 var error = require("../lib/error");
 
 module.exports = function (callback) {
@@ -35,8 +37,8 @@ module.exports = function (callback) {
   function next () {
     fs.mkdirSync(dir);
 
-    // run webpack
-
-    callback && callback(dir);
+    webpack(config("build", dir), function () {
+      callback && callback(dir);
+    });
   }
 }
