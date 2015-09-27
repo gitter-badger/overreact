@@ -2,10 +2,13 @@ import React from "react";
 import Router, { Route } from "react-router";
 
 import Base from "./views/Base";
+import Home from "./views/Home";
 
 let Routes = (
-  <Route path="/" handler={ Base }>
+  <Route handler={ Base }>
+    <Route path="/" handler={ Home }>
 
+    </Route>
   </Route>
 );
 

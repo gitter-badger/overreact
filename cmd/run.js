@@ -1,5 +1,6 @@
 // node modules
 var compress = require('compression');
+var ejs = require("ejs");
 var fs = require("fs");
 var minify = require('html-minifier').minify;
 var path = require("path");
@@ -91,19 +92,23 @@ function head () {
 }
 
 function app (req, res) {
-  if (project.client.type.name === "Route") {
-    Router.run(project.client, req.originalUrl, function (Handler) {
-      server.set("App", React.createElement(Handler, null));
-    });
-  } else {
-    server.set("App", project.client);
-  }
+  setTimeout(function () {
+    if (project.client.type.name === "Route") {
+      Router.run(project.client, req.originalUrl, function (Handler) {
+        server.set("App", React.createElement(Handler, null));
+      });
+    } else {
+      server.set("App", project.client);
+    }
 
-  server.render("index.ejs", {
-    app: React.renderToString(server.get("App")),
-    head: server.get("head"),
-    production: server.get("production")
-  }, function (err, html) {
+    var html = fs.readFileSync(path.join(__dirname, "..", "views", "index.ejs")).toString();
+
+    html = ejs.render(html, {
+      app: React.renderToString(server.get("App")),
+      head: server.get("head"),
+      production: server.get("production")
+    });
+
     res.send(minify(html, {
       removeComments: true,
       collapseWhitespace: true,

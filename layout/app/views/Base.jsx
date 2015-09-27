@@ -6,6 +6,7 @@ export default class Base extends React.Component {
     return (
       <div>
         <h1>Base</h1>
+        <RouteHandler />
       </div>
     )
   }

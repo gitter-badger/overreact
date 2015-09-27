@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "ejs": "^2.3.4",
     "express": "^4.13.3",
     "react": "^0.13.3",
     "react-router": "^0.13.3"
