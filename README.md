@@ -6,6 +6,8 @@ A scaffolding tool to simplify the development and deployment of a React applica
 
 `npm install -g nbreaton/overreact`
 
+<br />
+
 ### Command Line Options
 
 ```
@@ -22,23 +24,29 @@ overreact [param] [options...]
 | `run`                         | start production server             |
 
 
-### Directory Structure
+<br />
+
+### Project Structure
 
 ```
 .
 ├── app/
-│   └── index.jsx      <---- * must return react or react-router element
-├── assets/            <---- contains all files served at /assets/
-├── public/            <---- contains all files served at /
+│   └── *index.jsx     <- must return react or react-router element
+├── assets/            <- all files served at /assets/
+├── public/            <- all files served at /
 │   ├── favicon.ico
 │   └── robots.txt      
+├── node_modules/            
+│   ├── *express/
+│   ├── *react/
+│   └── *react-router/      
 ├── server/           
 │   ├── views/
-│   │   └── head.html  <---- HTML <head>, generated on server
-│   └── server.js      <---- * must return an Express application
+│   │   └── head.html  <- HTML <head>, generated on server
+│   └── *index.js      <- must return an Express application
 ├── styles/   
-│   └── main.scss      <---- * main styles file
+│   └── *index.scss    <- main styles file
 └─ package.json     
 
-* = a required endpoint
+* required
 ```
