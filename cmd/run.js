@@ -39,7 +39,7 @@ module.exports = function () {
 
     server.listen(server.get("port"), function () {
       var type = server.get("production") ? "Production" : "Development";
-      console.log(type + " running at http://localhost:" + server.get("port") + "\n");
+      console.log(type + " server running at http://localhost:" + server.get("port") + "\n");
     });
   }
 }
