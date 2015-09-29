@@ -53,11 +53,11 @@ function buildFiles (staticDir) {
 }
 
 function staticFiles () {
-  return express.static(path.join(process.cwd(), "assets"));
+  return express.static(path.join(project.root, "assets"));
 }
 
 function publicFiles () {
-  return express.static(path.join(process.cwd(), "public"));
+  return express.static(path.join(project.root, "public"));
 }
 
 function port () {
@@ -82,7 +82,7 @@ function production () {
 }
 
 function head () {
-  var head = path.join(process.cwd(), "server", "views", "head.html");
+  var head = path.join(project.root, "server", "views", "head.html");
   if (fs.existsSync(head)) {
     return fs.readFileSync(head)
             .toString()
