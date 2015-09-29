@@ -1,5 +1,7 @@
 # Overreact
 
+[![Join the chat at https://gitter.im/nbreaton/overreact](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nbreaton/overreact?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A scaffolding tool to simplify the development and deployment of a React application running on an Express server.
 
 ### Installation
